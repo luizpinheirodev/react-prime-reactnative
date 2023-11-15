@@ -10,17 +10,17 @@ import {
 
 import { Ionicons } from '@expo/vector-icons'
 
-function SliderItem(){
+function SliderItem( { data, navigatePage} ){
     return(
-        <Container activeOpacity={0.7}>
+        <Container activeOpacity={0.7} onPress={() => navigatePage(data)}>
             <BannerItem
-                source={{ uri: 'https://plus.unsplash.com/premium_photo-1682125771198-f7cbed7cb868?q=80&w=1460&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'}} 
+                source={{ uri: `https://image.tmdb.org/t/p/original/${data.poster_path}`}} 
             />
 
-            <Title numberOfLines={1}>Vingadores Vingadores</Title>
+            <Title numberOfLines={1}>{data.title}</Title>
             <RateContainer>
-                <Ionicons name="md-star" size={12} color="E7A74E" />
-                <Rate>9/10</Rate>
+                <Ionicons name="md-star" size={12} color="#E7A74E" />
+                <Rate>{data.vote_average}/10</Rate>
             </RateContainer>
         </Container>
     );
